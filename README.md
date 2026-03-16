@@ -2,37 +2,50 @@
 
 ## 🚨 The Situation
 
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
+You asked an AI to build a simple "Number Guessing Game" using Streamlit.  
+The original game had glitches:
 
-- You can't win.
-- The hints lie to you.
-- The secret number seems to have commitment issues.
+- Hints were backwards ("Too High" said "Go HIGHER!").  
+- The secret number type kept changing (sometimes a string), causing inconsistent behavior.  
+- Scoring could behave unpredictably.
 
 ## 🛠️ Setup
 
-1. Install dependencies: `pip install -r requirements.txt`
-2. Run the broken app: `python -m streamlit run app.py`
+1. Install dependencies: 
 
-## 🕵️‍♂️ Your Mission
+```bash
+pip install -r requirements.txt
+```
+## 📸 Demo
 
-1. **Play the game.** Open the "Developer Debug Info" tab in the app to see the secret number. Try to win.
-2. **Find the State Bug.** Why does the secret number change every time you click "Submit"? Ask ChatGPT: *"How do I keep a variable from resetting in Streamlit when I click a button?"*
-3. **Fix the Logic.** The hints ("Higher/Lower") are wrong. Fix them.
-4. **Refactor & Test.** - Move the logic into `logic_utils.py`.
-   - Run `pytest` in your terminal.
-   - Keep fixing until all tests pass!
+Play the game by entering guesses in the text box.
+
+The game shows hints (“Higher” / “Lower”) after each guess.
+
+The score updates correctly based on your guesses.
+
+Click “New Game” to reset the secret number, attempts, and score at any time.
+
+The Developer Debug Info lets you see the secret number, attempts, score, and history for testing.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+**Game Purpose:**  
+Guess the secret number within a limited number of attempts while tracking your score.
 
-## 📸 Demo
+**Bugs Found:**  
+- Hint messages were inverted.  
+- Secret number was converted to a string every 2nd attempt.
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+**Fixes Applied:**  
+- Corrected hint messages in `check_guess`.  
+- Removed string conversion of the secret number.  
+- Refactored core logic into `logic_utils.py`.  
+- Verified fixes with pytest and live gameplay.
 
-## 🚀 Stretch Features
+**AI Collaboration:**  
+- Correct suggestion: Swap hint messages to match numeric comparison. Verified via pytest.  
+- Misleading suggestion: Converting secret to string was intentional. Verified it caused errors and removed it.
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+🚀 Stretch Features
+![Winning Game Demo](game_demo.png)
