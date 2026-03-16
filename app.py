@@ -13,7 +13,6 @@ st.title("🎮 Game Glitch Investigator")
 st.caption("An AI-generated guessing game. Something is off.")
 
 st.sidebar.header("Settings")
-
 difficulty = st.sidebar.selectbox(
     "Difficulty",
     ["Easy", "Normal", "Hard"],
@@ -50,6 +49,7 @@ if "status" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+# --- User input ---
 st.subheader("Make a guess")
 
 st.info(
